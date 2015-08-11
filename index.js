@@ -5,7 +5,13 @@ let config = require('./config');
 let router = require('./lib/routes');
 let Path = require('path');
 
-let server = new Hapi.Server();
+let server = new Hapi.Server({
+  connections: {
+    routes: {
+      cors: { origin: ['*'], matchOrigin: false, additionalHeaders: ['Access-Control-Allow-Origin'] }
+    }
+  }
+});
 server.connection({
   port: config.get('PORT'),
   router: { isCaseSensitive: false, stripTrailingSlash: true },

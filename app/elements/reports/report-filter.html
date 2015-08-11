@@ -1,0 +1,71 @@
+
+
+<dom-module id="report-filter">
+  <style>
+
+  </style>
+  <template>
+    <form is="iron-form" class="layout vertical">
+      <div class="layout vertical">
+        <paper-input label="Gate" name="gate"></paper-input>
+
+        <paper-menu id="alarmType" selected="{{_alarmTypeIndex}}">
+          <paper-item>OPC</paper-item>
+          <paper-item>Digital</paper-item>
+          <paper-item>Tag Client</paper-item>
+          <paper-item>System</paper-item>
+        </paper-menu>
+
+        <div class="layout horizontal">
+          <paper-date-picker force-narrow date="{{startDate}}"></paper-date-picker>
+          <paper-date-picker force-narrow date="{{endDate}}"></paper-date-picker>
+        </div>
+
+      </div>
+
+    </form>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'report-filter',
+
+      properties: {
+
+        _alarmTypeIndex: {
+          type: Number,
+          value: 0,
+          notify: true,
+          observer: '_alarmTypeChanged'
+        },
+
+        startDate: {
+          type: Date,
+          notify: true,
+          value: moment().subtract(1, 'month').toDate()
+        },
+
+        endDate: {
+          type: Date,
+          notify: true,
+          value: moment().toDate()
+        },
+
+        _alarmType: {
+          type: String,
+          notify: true
+        }
+
+      },
+
+//      get _alarmType() {
+//        return this.$.alarmType.items[this._alarmTypeIndex].innerText;
+//      },
+
+      _alarmTypeChanged: function() {
+        this._alarmType = this.$.alarmType.items[this._alarmTypeIndex].innerText;
+      }
+
+    });
+  </script>
+</dom-module>

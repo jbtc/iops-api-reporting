@@ -66,7 +66,8 @@
     "build": "gulp",
     "start-server": "node .",
     "start": "npm run build && npm run start-server",
-    "katon-start": "nodemon"
+    "local-dev": "nodemon",
+    "katon-start": "npm run local-dev"
   },
   "engines": {
     "node": ">=0.10.0"

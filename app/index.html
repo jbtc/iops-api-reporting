@@ -61,7 +61,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <paper-drawer-panel id="paperDrawerPanel" force-narrow>
         <!-- Drawer Scroll Header Panel -->
-        <paper-scroll-header-panel drawer fixed>
+        <paper-scroll-header-panel drawer no-reveal>
 
           <!-- Drawer Toolbar -->
           <paper-toolbar id="drawerToolbar">
@@ -85,7 +85,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </paper-scroll-header-panel>
 
         <!-- Main Area -->
-        <paper-scroll-header-panel main condenses keep-condensed-header>
+        <paper-scroll-header-panel main fixed>
 
           <!-- Main Toolbar -->
           <paper-toolbar id="mainToolbar">
@@ -109,32 +109,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
               <section data-route="gpu">
                 <paper-material elevation="1">
-                  <my-greeting></my-greeting>
-
-                  <p class="paper-font-subhead">You now have:</p>
-                  <my-list></my-list>
-
-                  <p class="paper-font-body2">Looking for more Web App layouts? Check out our
-                    <a href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can
-                    also <a href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>
+                  <h1>GPU</h1>
+                  <tag-report asset="gpu"></tag-report>
                 </paper-material>
 
               </section>
 
               <section data-route="pbb">
                 <paper-material elevation="1">
-                  <h2 class="paper-font-display2">Users</h2>
-
-                  <p>This is the users section</p>
-                  <a href="/users/Rob">Rob</a>
+                  <h1>PBB</h1>
+                  <tag-report asset="pbb"></tag-report>
                 </paper-material>
               </section>
 
               <section data-route="pca">
                 <paper-material elevation="1">
-                  <h2 class="paper-font-display2">Contact</h2>
-
-                  <p>This is the contact section</p>
+                  <h1>PCA</h1>
+                  <tag-report asset="pca"></tag-report>
                 </paper-material>
               </section>
 

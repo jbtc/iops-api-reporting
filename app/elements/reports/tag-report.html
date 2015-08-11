@@ -1,0 +1,93 @@
+<dom-module id="tag-report">
+  <style>
+    table {
+      padding: 0;
+      margin: 0;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    table th {
+      text-align: left;
+    }
+
+    table th.right-align, td.right-align {
+      text-align: right;
+    }
+
+    table th, td {
+      padding: 10px;
+    }
+
+    table thead {
+      background-color: var(--accent-color);
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #e6e6e6;
+    }
+  </style>
+  <template>
+    <div class="layout vertical">
+      <iron-ajax id="report" auto handle-as="json" url="{{url}}" verbose debounce-duration="300" last-response="{{results}}"></iron-ajax>
+      <!--<report-filter></report-filter>-->
+      <table class="flex">
+        <thead>
+        <tr>
+          <th>Type</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th class="">Occurred At</th>
+          <th>Cleared At</th>
+          <th class="right-align">Elapsed (Minutes)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <template is="dom-repeat" items="{{results}}">
+          <tr>
+            <td>{{item.AlarmType}}</td>
+            <td>{{item.AlarmGroup}}</td>
+            <td>{{item.AlarmText}}</td>
+            <td>{{_formatDate(item.AlarmDateTime)}}</td>
+            <td>{{_formatDate(item.ClearedDateTime)}}</td>
+            <td class="right-align">{{_differenceInMinutes(item.AlarmDateTime, item.ClearedDateTime)}}</td>
+          </tr>
+        </template>
+        </tbody>
+      </table>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'tag-report',
+      properties: {
+        asset: {
+          type: String,
+          reflectToAttribute: true,
+          notify: true
+        },
+
+        url: {
+          type: String,
+          computed: '_computeUrl(asset)'
+        }
+      },
+
+      _computeUrl: function(asset) {
+        return "/v1/" + asset + "/reports";
+      },
+
+      _formatDate: function(dt) {
+        if (dt) {
+          return moment(dt).format('MM/DD/YYYY h:mm A');
+        }
+      },
+
+      _differenceInMinutes: function(start, end) {
+        if (start && end) {
+          return moment(end).diff(start, 'minutes');
+        }
+      }
+    });
+  </script>
+</dom-module>
