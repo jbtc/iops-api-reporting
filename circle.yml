@@ -12,9 +12,6 @@ deployment:
   production:
     branch: master
     commands:
-      - npm install bower -g
-      - bower install
-      - gulp
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS tutum.co
       - docker build -t tutum.co/iops/api-reporting .
       - docker push tutum.co/iops/api-reporting
