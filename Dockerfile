@@ -6,11 +6,7 @@ COPY . /src
 
 WORKDIR /src
 
-RUN npm install && \
-  npm install bower -g && \
-  bower install && \
-  gulp
-
+RUN npm install
 
 EXPOSE 4000
 
