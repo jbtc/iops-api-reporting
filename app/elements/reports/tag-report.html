@@ -1,5 +1,10 @@
 <dom-module id="tag-report">
   <style>
+    h1 {
+      margin: 0;
+      padding: 0;
+    }
+
     table {
       padding: 0;
       margin: 0;
@@ -20,16 +25,22 @@
     }
 
     table thead {
-      background-color: var(--accent-color);
+      background-color: var(--dark-primary-color);
+      color: white;
     }
 
     tbody tr:nth-child(odd) {
       background-color: #e6e6e6;
     }
+
+    paper-input {
+      margin-bottom: 15px;
+    }
   </style>
   <template>
+    <iron-ajax id="report" auto handle-as="json" url="{{url}}" verbose debounce-duration="300" last-response="{{results}}"></iron-ajax>
     <div class="layout vertical">
-      <iron-ajax id="report" auto handle-as="json" url="{{url}}" verbose debounce-duration="300" last-response="{{results}}"></iron-ajax>
+      <paper-input id="filter" label="Filter" bind-value="{{_filterBy}}"></paper-input>
       <!--<report-filter></report-filter>-->
       <table class="flex">
         <thead>
@@ -43,7 +54,7 @@
         </tr>
         </thead>
         <tbody>
-        <template is="dom-repeat" items="{{results}}">
+        <template is="dom-repeat" items="{{results}}" filter="{{_filter(_filterBy)}}">
           <tr>
             <td>{{item.AlarmType}}</td>
             <td>{{item.AlarmGroup}}</td>
@@ -74,7 +85,8 @@
 
         _filterBy: {
           type: String,
-          notify: true
+          notify: true,
+          value: ''
         }
       },
 
@@ -92,7 +104,19 @@
         if (start && end) {
           return moment(end).diff(start, 'minutes');
         }
-      }
+      },
+
+      _filter: function(val) {
+        console.log(val);
+        return function(item) {
+          if (!val) return true;
+          if (!item) return true;
+          val = val.toLowerCase();
+          return (_.contains(item.AlarmType.toLowerCase(), val) ||
+          _.contains(item.AlarmGroup.toLowerCase(), val) ||
+          _.contains(item.AlarmText.toLowerCase(), val));
+        };
+      },
     });
   </script>
 </dom-module>
