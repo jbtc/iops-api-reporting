@@ -109,8 +109,12 @@
       _filter: function(val) {
         console.log(val);
         return function(item) {
-          if (!val) return true;
-          if (!item) return true;
+          if (!val) {
+            return true;
+          }
+          if (!item) {
+            return true;
+          }
           val = val.toLowerCase();
           return (_.contains(item.AlarmType.toLowerCase(), val) ||
           _.contains(item.AlarmGroup.toLowerCase(), val) ||

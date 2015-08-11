@@ -21,6 +21,7 @@
     "Platform": true,
     "page": true,
     "app": true,
-    "moment": true
+    "moment": true,
+    "_": true
   }
 }
