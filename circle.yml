@@ -4,10 +4,6 @@ machine:
   services:
     - docker
 
-notify:
-  webhooks:
-    - url: https://dashboard.tutum.co/api/v1/service/43f0a003-2e05-4285-a292-cea04a6c6fc6/trigger/17d1367e-cd73-4c04-aaeb-a55415d7bc6d/call/
-
 deployment:
   production:
     branch: master
