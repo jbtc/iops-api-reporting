@@ -6,9 +6,9 @@ COPY . /src
 
 WORKDIR /src
 
-RUN npm install \
-  npm install bower -g \
-  bower install \
+RUN npm install && \
+  npm install bower gulp -g && \
+  bower install && \
   gulp
 
 
