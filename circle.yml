@@ -4,14 +4,15 @@ machine:
   services:
     - docker
 
-#notify:
-#  webhooks:
-#    - url: https://dashboard.tutum.co/api/v1/service/91073d20-cf32-4762-a9cd-44a05e5a1dd1/trigger/fae14708-175c-44bd-91b4-b9e9968bb7c5/call/
+notify:
+  webhooks:
+    - url: https://dashboard.tutum.co/api/v1/service/43f0a003-2e05-4285-a292-cea04a6c6fc6/trigger/17d1367e-cd73-4c04-aaeb-a55415d7bc6d/call/
 
 deployment:
   production:
     branch: master
     commands:
+      - gulp
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS tutum.co
       - docker build -t tutum.co/iops/api-reporting .
       - docker push tutum.co/iops/api-reporting
