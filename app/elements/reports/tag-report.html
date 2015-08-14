@@ -16,7 +16,8 @@
       text-align: left;
     }
 
-    table th.right-align, td.right-align {
+    th.right-align,
+    td.right-align {
       text-align: right;
     }
 
@@ -90,25 +91,25 @@
         }
       },
 
-      _computeUrl: function(asset) {
+      _computeUrl: function (asset) {
         return '/v1/' + asset + '/reports';
       },
 
-      _formatDate: function(dt) {
+      _formatDate: function (dt) {
         if (dt) {
           return moment(dt).format('MM/DD/YYYY h:mm A');
         }
       },
 
-      _differenceInMinutes: function(start, end) {
+      _differenceInMinutes: function (start, end) {
         if (start && end) {
           return moment(end).diff(start, 'minutes');
         }
       },
 
-      _filter: function(val) {
+      _filter: function (val) {
         console.log(val);
-        return function(item) {
+        return function (item) {
           if (!val) {
             return true;
           }

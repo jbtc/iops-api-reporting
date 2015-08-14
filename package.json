@@ -63,6 +63,7 @@
     "test-browser": "gulp test:local",
     "start-browser": "gulp serve",
     "test": "mocha test",
+    "test-watch": "mocha test --watch",
     "build": "gulp",
     "start-server": "node .",
     "start": "npm run build && npm run start-server",

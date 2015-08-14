@@ -13,7 +13,6 @@ describe('ReportingManager', function() {
     expect(manager).to.be.ok;
   });
 
-
   it('should be able to query by gate', function(done) {
     manager.query({ gate: 'Gate C-3' })
       .then(function(results) {
