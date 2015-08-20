@@ -66,6 +66,7 @@
     "test-watch": "mocha test --watch",
     "build": "gulp",
     "start-server": "node .",
+    "start-debug": "npm run build && node --lazy --debug-brk .",
     "start": "npm run build && npm run start-server",
     "local-dev": "NODE_ENV=dev nodemon",
     "katon-start": "npm run local-dev"
