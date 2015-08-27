@@ -71,16 +71,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <!-- Drawer Content -->
           <paper-menu class="list" attr-for-selected="data-route" selected="{{route}}" on-iron-select="onMenuSelect">
             <a data-route="home" href="/">
-              <span>GPU</span>
+              <span>Alarms</span>
             </a>
 
-            <a data-route="users" href="/pbb">
-              <span>PBB</span>
+            <a data-route="users" href="/warnings">
+              <span>Warnings</span>
             </a>
 
-            <a data-route="contact" href="/pca">
+            <!--<a data-route="contact" href="/pca">
               <span>PCA</span>
-            </a>
+            </a>-->
           </paper-menu>
         </paper-scroll-header-panel>
 
@@ -98,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <!-- Application name -->
             <div class="middle middle-container center horizontal layout">
-              <div class="app-name">Reporting</div>
+              <div class="app-name">Reporting JFK</div>
             </div>
 
           </paper-toolbar>
@@ -107,27 +107,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div class="content">
             <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
-              <section data-route="gpu">
+              <section data-route="Alarms">
                 <paper-material elevation="1">
-                  <h1>GPU</h1>
-                  <tag-report asset="gpu"></tag-report>
+                  <h1>Alarms</h1>
+                  <tag-report asset="Alarms"></tag-report>
                 </paper-material>
 
               </section>
 
-              <section data-route="pbb">
+              <section data-route="Warnings">
                 <paper-material elevation="1">
-                  <h1>PBB</h1>
-                  <tag-report asset="pbb"></tag-report>
+                  <h1>Warnings</h1>
+                  <tag-report asset="Warnings"></tag-report>
                 </paper-material>
               </section>
 
-              <section data-route="pca">
+              <!--<section data-route="pca">
                 <paper-material elevation="1">
                   <h1>PCA</h1>
                   <tag-report asset="pca"></tag-report>
                 </paper-material>
-              </section>
+              </section>-->
 
             </iron-pages>
           </div>
